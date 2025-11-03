@@ -17,7 +17,6 @@ int main() {
         " -------\n |     |\n |     O\n |    /|\\\n |    / \\\n |\n-------\n"
     };
 
-    // Initialiser le mot deviné avec des tirets
     for (i = 0; i < strlen(mot); i++) {
         devine[i] = '_';
     }
