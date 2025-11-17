@@ -15,12 +15,5 @@ int main() {
         width = n *n ;
         max_height= 3*n-1;
 
-    for(int i=0;i<=width;i++){
-        for (int j=0;j<=max_height;i++){
-            img[i][j]= ' ';
-            printf("%c",img[i][j]);
-        }
 
-    }
-    }
 }
