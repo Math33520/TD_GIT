@@ -9,18 +9,18 @@ int main() {
     scanf("%d",&n);
     if (n<4 || n>11){
         printf("La taille entrez est pas dans l'intervalle demander ");
+        scanf("%d",&n);
     }
     else{
         width = n *n ;
         max_height= 3*n-1;
 
-    for(int i=0;i<=n;i++){
+    for(int i=0;i<=width;i++){
         for (int j=0;j<=max_height;i++){
             img[i][j]= ' ';
-            printf("%s",img[i][j]);
+            printf("%c",img[i][j]);
         }
 
     }
-
-
+    }
 }
