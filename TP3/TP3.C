@@ -15,5 +15,5 @@ int main() {
         width = n *n ;
         max_height= 3*n-1;
 
-
+    
 }
