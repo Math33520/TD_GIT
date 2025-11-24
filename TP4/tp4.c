@@ -69,7 +69,15 @@ void affichernotes(int nbeleves,float tab[0][3])
     
     }
 }
-
+float calculerMoyenneEleve(float tab[][3], int indiceEleve)
+{
+    float somme = 0.0f;
+    for (int j = 0; j < 3; j++)
+    {
+        somme = somme + tab[indiceEleve][j];
+    }
+    return somme / 3.0f;
+}
 int main()
 {
     affichemenu();
@@ -78,6 +86,15 @@ int main()
     int valeur = saisinombreeleves();
     Saisinotes(tab, valeur); 
     affichernotes(valeur,tab) ;
-    
+    int indice;
+    printf("Entrez l'indice de l'eleve (1 a %d): ", valeur);
+    scanf("%d", &indice);
+    while (indice < 1 || indice > valeur)
+    {
+        printf("Indice invalide. Entrez l'indice de l'eleve (1 a %d): ", valeur);
+        scanf("%d", &indice);
+    }
+    float moyenne = calculerMoyenneEleve(tab, indice - 1);
+    printf("Moyenne de l'eleve %d: %.2f\n", indice, moyenne);
     return 0;
 }
