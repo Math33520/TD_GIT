@@ -12,8 +12,19 @@ void affichemenu(){
     
 
 }
+
+int lirechoix()
+{
+    int choix;
+    printf("Donnez votre choix parmis tout les nombres");
+    scanf("%d",&choix);
+    return choix;
+}
 int main()
 {
     affichemenu();
+    int variable = lirechoix();
+    printf("\n Vous avez choisi l'option :%d\n",variable);
+
     return 0;
 }
