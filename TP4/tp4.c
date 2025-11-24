@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 void affichemenu(){
     printf("====Gestion des notes ====\n");
     printf("1. Saisir le nombre d'eleves\n");
@@ -10,7 +9,6 @@ void affichemenu(){
     printf("6. Afficher la meilleur note de chaque controle\n");
     printf("0. Quitter\n");
 }
-
 int lirechoix()
 {
     int choix;
@@ -18,13 +16,11 @@ int lirechoix()
     scanf("%d",&choix);
     return choix;
 }
-
 int saisinombreeleves()
 {
     int nbeleves;
     printf("saisir le nombre d'eleves de (1 a 30) : ");
     scanf("%d",&nbeleves);
-
     if (nbeleves < 1 || nbeleves > 30)
     {
         printf("\nValeur invalide\n");
@@ -35,7 +31,6 @@ int saisinombreeleves()
         return nbeleves;
     }
 }
-
 void Saisinotes(float tab[][3], int nbeleves)
 {
     printf("Saisie des notes pour %d eleves et 3 controles.\n", nbeleves);
@@ -66,7 +61,6 @@ void affichernotes(int nbeleves,float tab[0][3])
             printf("%4.0f",tab[i][j]);
         }
         printf("\n");
-    
     }
 }
 float calculerMoyenneEleve(float tab[][3], int indiceEleve)
@@ -81,12 +75,10 @@ float calculerMoyenneEleve(float tab[][3], int indiceEleve)
 float calculerMoyenneGenerale(float tab[][3], int nbeleves)
 {
     float sommeMoyennes = 0.0f;
-
     for (int i = 0; i < nbeleves; i++)
     {
         sommeMoyennes = sommeMoyennes + calculerMoyenneEleve(tab, i);
     }
-
     return sommeMoyennes / nbeleves;
 }
 float trouverMeilleureNoteControle(float tab[][3], int nbeleves, int indiceControle)
@@ -103,6 +95,14 @@ float trouverMeilleureNoteControle(float tab[][3], int nbeleves, int indiceContr
 
     return max;
 }
+void afficherMeilleuresNotes(int nombreEleves, float tab[][3]) {
+    for (int j = 0; j < 3; j++) {
+        float meilleureNote = trouverMeilleureNoteControle(tab, nombreEleves, j);
+        printf("Meilleure note au controle %d : %.2f\n", j + 1, meilleureNote);
+    }
+}
+
+
 int main()
 {
     affichemenu();
@@ -123,11 +123,6 @@ int main()
     printf("Moyenne de l'eleve %d: %.2f\n", indice, moyenne);
      float moyenneGenerale = calculerMoyenneGenerale(tab, valeur);
     printf("Moyenne generale de la classe: %.2f\n", moyenneGenerale);
-    float meilleurC1 = trouverMeilleureNoteControle(tab, valeur, 0);
-    float meilleurC2 = trouverMeilleureNoteControle(tab, valeur, 1);
-    float meilleurC3 = trouverMeilleureNoteControle(tab, valeur, 2);
-    printf("Meilleure note du controle 1: %.2f\n", meilleurC1);
-    printf("Meilleure note du controle 2: %.2f\n", meilleurC2);
-    printf("Meilleure note du controle 3: %.2f\n", meilleurC3);
+    afficherMeilleuresNotes(valeur, tab);
     return 0;
 }
