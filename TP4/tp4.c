@@ -55,6 +55,20 @@ void Saisinotes(float tab[][3], int nbeleves)
         }
     }
 }
+void affichernotes(int nbeleves,float tab[0][3])
+{
+    printf("Tableau des notes\nEleve C1 C2 C3\n");
+    for(int i=0;i<nbeleves;i++)
+    {
+        printf("%d",i+1);
+        for(int j = 0 ;j<3;j++)
+        {
+            printf("%4.0f",tab[i][j]);
+        }
+        printf("\n");
+    
+    }
+}
 
 int main()
 {
@@ -62,6 +76,8 @@ int main()
     float tab[30][3];          
     int variable = lirechoix();
     int valeur = saisinombreeleves();
-    Saisinotes(tab, valeur);   
+    Saisinotes(tab, valeur); 
+    affichernotes(valeur,tab) ;
+    
     return 0;
 }
