@@ -78,6 +78,17 @@ float calculerMoyenneEleve(float tab[][3], int indiceEleve)
     }
     return somme / 3.0f;
 }
+float calculerMoyenneGenerale(float tab[][3], int nbeleves)
+{
+    float sommeMoyennes = 0.0f;
+
+    for (int i = 0; i < nbeleves; i++)
+    {
+        sommeMoyennes = sommeMoyennes + calculerMoyenneEleve(tab, i);
+    }
+
+    return sommeMoyennes / nbeleves;
+}
 int main()
 {
     affichemenu();
@@ -96,5 +107,7 @@ int main()
     }
     float moyenne = calculerMoyenneEleve(tab, indice - 1);
     printf("Moyenne de l'eleve %d: %.2f\n", indice, moyenne);
+     float moyenneGenerale = calculerMoyenneGenerale(tab, valeur);
+    printf("Moyenne generale de la classe: %.2f\n", moyenneGenerale);
     return 0;
 }
