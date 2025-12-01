@@ -62,4 +62,23 @@ void afficheResume()
     printf("Proteines :%d\n",consommations[6]);
     printf("====================================\n");
 }
-
+int charger()
+{
+    FILE * f = fopen("consommation.txt","r");
+    if (f == NULL)
+    {
+        return 0;
+    }
+    else{
+        for(int i = 0;i < 7;i++)
+        {
+            if (fscanf(f,"%d",&consommations[i]) != 1)
+            {
+                fclose(f);
+                return 0;
+            }
+        }
+    }
+    fclose(f);
+    return 1;
+}

@@ -7,4 +7,5 @@ int lireChoix();
 void initialiser();
 void ajouterConsommation();
 void afficheResume();
+int charger();
 #endif
