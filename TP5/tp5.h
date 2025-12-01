@@ -7,6 +7,6 @@ int lireChoix();
 void initialiser(int tab[]);
 void ajouterConsommation(int tab[]);
 void afficheResume(int tab[]);
-int charger(int tab[]);
 int sauvegarde(int tab[]);
+int charger(int tab[]);
 #endif

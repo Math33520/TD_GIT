@@ -59,6 +59,22 @@ void afficheResume(int tab[])
     printf("Proteines : %d\n", tab[6]);
     printf("====================================\n");
 }
+int sauvegarde(int tab[])
+{
+    FILE *f = fopen("consommation.txt", "w");
+    if (f == NULL)
+    {
+        return 0;
+    }
+    for (int i = 0; i < 7; i++)
+    {
+        fprintf(f, "%d ", tab[i]); 
+    }
+    fprintf(f, "\n");
+
+    fclose(f);
+    return 1;
+}
 
 int charger(int tab[])
 {
@@ -76,23 +92,6 @@ int charger(int tab[])
             return 0;
         }
     }
-    fclose(f);
-    return 1;
-}
-
-int sauvegarde(int tab[])
-{
-    FILE *f = fopen("consommation.txt", "w");
-    if (f == NULL)
-    {
-        return 0;
-    }
-    for (int i = 0; i < 7; i++)
-    {
-        fprintf(f, "%d ", tab[i]); 
-    }
-    fprintf(f, "\n");
-
     fclose(f);
     return 1;
 }
