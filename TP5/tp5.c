@@ -17,9 +17,9 @@ int lireChoix()
     scanf("%d",&choix);
     return choix;
 }
+int consommations[7];
 void initialiser()
 {
-    int consommations[7];
     for(int i=0;i<7;i++)
     {
         consommations[i]=0;
@@ -29,5 +29,24 @@ void ajouterConsommation()
 {
     int choixCategorie = 0;
     int quantite = 0;
-    printf("\n Quelle categorie voulez")
+    printf("\n Quelle categorie voulez-vous modifier \n");
+    printf("1. Eau 💧\n");
+    printf("2. Cafe ☕\n");
+    printf("3. Bonbons 🍬\n");
+    printf("4. Gateau 🍰\n");
+    printf("5. Legumes 🥦\n");
+    printf("6. Fruits 🍎\n");
+    printf("7. Proteines 🍗\n");
+    printf("Votre choix :");
+    scanf("%d",&choixCategorie);
+    if (choixCategorie < 1 || choixCategorie > 7)
+    {
+        printf("Choix invalide\n");
+        return ;
+    }
+    printf("combien d'unite ajouter? :");
+    scanf("%d",&quantite);
+    consommations[choixCategorie-1]= consommations[choixCategorie-1] + quantite;
+    printf("Consommation mise a jour.\n");
+
 }
