@@ -9,4 +9,7 @@ void ajouterConsommation(int tab[]);
 void afficheResume(int tab[]);
 int sauvegarde(int tab[]);
 int charger(int tab[]);
+int humeurBonbons(int  nbBonbons);
+int humeurLegumes(int nbLegumes);
+int humeurFruits(int nbFruits);
 #endif

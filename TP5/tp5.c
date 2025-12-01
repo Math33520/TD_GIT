@@ -47,18 +47,6 @@ void ajouterConsommation(int tab[])
     tab[choixCategorie - 1] = tab[choixCategorie - 1] + quantite;
     printf("Consommation mise a jour.\n");
 }
-void afficheResume(int tab[])
-{
-    printf("========== Resume du jour ==========\n");
-    printf("Eau       : %d\n", tab[0]);
-    printf("Cafe      : %d\n", tab[1]);
-    printf("Bonbons   : %d\n", tab[2]);
-    printf("Gateau    : %d\n", tab[3]);
-    printf("Legumes   : %d\n", tab[4]);
-    printf("Fruits    : %d\n", tab[5]);
-    printf("Proteines : %d\n", tab[6]);
-    printf("====================================\n");
-}
 int sauvegarde(int tab[])
 {
     FILE *f = fopen("consommation.txt", "w");
@@ -94,4 +82,58 @@ int charger(int tab[])
     }
     fclose(f);
     return 1;
+}
+int humeurBonbons(int n) {
+    if (n<=3) return 0;
+    if (n<=7) return 1;
+    if (n<=12) return 2;
+    return 3;
+}
+int humeurLegumes(int n) {
+    if (n==0) return 0;
+    if (n<=2) return 1;
+    return 2;
+}
+int humeurFruits(int n) {
+    if (n==0) return 0;
+    if (n==1) return 1;
+    return 2;
+}
+void afficheResume(int tab[])
+{
+    printf("========== Resume du jour ==========\n");
+
+    printf("Eau       : %d 💧\n", tab[0]);
+    printf("Cafe      : %d ☕\n", tab[1]);
+
+    // Bonbons : quantité + 🍬 + humeur
+    printf("Bonbons   : %d 🍬 ", tab[2]);
+    int hb = humeurBonbons(tab[2]);
+    if (hb == 0)      printf("😇");
+    else if (hb == 1) printf("🙂");
+    else if (hb == 2) printf("😬");
+    else              printf("😈");
+    printf("\n");
+
+    printf("Gateau    : %d 🍰\n", tab[3]);
+
+    // Legumes : quantité + 🥦 + humeur
+    printf("Legumes   : %d 🥦 ", tab[4]);
+    int hl = humeurLegumes(tab[4]);
+    if (hl == 0)      printf("🎁");
+    else if (hl == 1) printf("🙂");
+    else              printf("😎");
+    printf("\n");
+
+    // Fruits : quantité + 🍎 + humeur
+    printf("Fruits    : %d 🍎 ", tab[5]);
+    int hf = humeurFruits(tab[5]);
+    if (hf == 0)      printf("😧");
+    else if (hf == 1) printf("🙂");
+    else              printf("😄");
+    printf("\n");
+
+    printf("Proteines : %d 🍗\n", tab[6]);
+
+    printf("====================================\n");
 }
