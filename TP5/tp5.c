@@ -102,38 +102,70 @@ int humeurFruits(int n) {
 void afficheResume(int tab[])
 {
     printf("========== Resume du jour ==========\n");
-
-    printf("Eau       : %d 💧\n", tab[0]);
-    printf("Cafe      : %d ☕\n", tab[1]);
-
-    // Bonbons : quantité + 🍬 + humeur
+    printf("Eau       : %d 💧 ", tab[0]);
+    afficherBarre(tab[0], 20);
+    printf("\n");
+    printf("Cafe      : %d ☕ ", tab[1]);
+    afficherBarre(tab[1], 20);
+    printf("\n");
     printf("Bonbons   : %d 🍬 ", tab[2]);
     int hb = humeurBonbons(tab[2]);
-    if (hb == 0)      printf("😇");
-    else if (hb == 1) printf("🙂");
-    else if (hb == 2) printf("😬");
-    else              printf("😈");
+    if (hb == 0)      printf("😇 ");
+    else if (hb == 1) printf("🙂 ");
+    else if (hb == 2) printf("😬 ");
+    else              printf("😈 ");
+    afficherBarre(tab[2], 20);
     printf("\n");
-
-    printf("Gateau    : %d 🍰\n", tab[3]);
-
-    // Legumes : quantité + 🥦 + humeur
+    printf("Gateau    : %d 🍰 ", tab[3]);
+    afficherBarre(tab[3], 20);
+    printf("\n");
     printf("Legumes   : %d 🥦 ", tab[4]);
     int hl = humeurLegumes(tab[4]);
-    if (hl == 0)      printf("🎁");
-    else if (hl == 1) printf("🙂");
-    else              printf("😎");
+    if (hl == 0){
+        printf("🎁 ");
+    }
+    else if (hl == 1)
+    {
+        printf("🙂 ");
+    }
+    else{
+        printf("😎 ");
+    }
+    afficherBarre(tab[4], 20);
     printf("\n");
-
-    // Fruits : quantité + 🍎 + humeur
     printf("Fruits    : %d 🍎 ", tab[5]);
     int hf = humeurFruits(tab[5]);
-    if (hf == 0)      printf("😧");
-    else if (hf == 1) printf("🙂");
-    else              printf("😄");
+    if (hf == 0){
+        printf("😧 ");
+    }
+    else if (hf == 1){
+        printf("🙂 ");
+    }
+    else{
+        printf("😄 ");
+    }
+    afficherBarre(tab[5], 20);
     printf("\n");
-
-    printf("Proteines : %d 🍗\n", tab[6]);
-
+    printf("Proteines : %d 🍗 ", tab[6]);
+    afficherBarre(tab[6], 20);
+    printf("\n");
     printf("====================================\n");
+}
+void afficherBarre(int valeur, int max)
+{
+    int casesPleines;
+    if (max <= 0)
+        max = 1;
+    if (valeur < 0)
+        valeur = 0;
+    if (valeur > max)
+        valeur = max;
+    casesPleines = (valeur * 10) / max;
+    for (int i = 0; i < 10; i++)
+    {
+        if (i < casesPleines)
+            printf("█");
+        else
+            printf("░");
+    }
 }

@@ -12,4 +12,5 @@ int charger(int tab[]);
 int humeurBonbons(int  nbBonbons);
 int humeurLegumes(int nbLegumes);
 int humeurFruits(int nbFruits);
+void afficherBarre(int valeur, int max);
 #endif
