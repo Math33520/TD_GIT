@@ -62,3 +62,4 @@ void afficheResume()
     printf("Proteines :%d\n",consommations[6]);
     printf("====================================\n");
 }
+

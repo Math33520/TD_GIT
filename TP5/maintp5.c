@@ -3,6 +3,9 @@
 
 int main ()
 {
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    setlocale(LC_ALL, ".UTF-8"); 
     int choix = 0;
     int tab[7];
     initialiser(tab);
