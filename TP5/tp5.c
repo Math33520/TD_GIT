@@ -50,3 +50,15 @@ void ajouterConsommation()
     printf("Consommation mise a jour.\n");
 
 }
+void afficheResume()
+{
+    printf("========== Resume du jour ==========\n");
+    printf("Eau :%d\n",consommations[0]);
+    printf("Cafe :%d\n",consommations[1]);
+    printf("Bonbons :%d\n",consommations[2]);
+    printf("Gateau :%d\n",consommations[3]);
+    printf("Legumes :%d\n",consommations[4]);
+    printf("Fruits :%d\n",consommations[5]);
+    printf("Proteines :%d\n",consommations[6]);
+    printf("====================================\n");
+}

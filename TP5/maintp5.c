@@ -4,16 +4,21 @@
 int main ()
 {
     int choix = 0;
-    char tab[7];
+    int tab[7];
+    initialiser(tab);
     while (choix !=3)
     {
         afficherMenu();
         choix = lireChoix();
         if (choix==1)
         {
-            ajouterConsommation();
+            ajouterConsommation(tab);
         }
-        if(choix == 3 )
+        else if(choix==2)
+        {
+            afficheResume(tab);
+        }
+        else if(choix == 3 )
         {
             printf("Sauvegarde et quitter \n");
         }

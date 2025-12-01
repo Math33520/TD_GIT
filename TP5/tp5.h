@@ -5,4 +5,5 @@ void afficherMenu();
 int lireChoix();
 void initialiser();
 void ajouterConsommation();
+void afficheResume();
 #endif
