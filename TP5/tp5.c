@@ -10,22 +10,20 @@ void afficherMenu()
     printf("3. Sauvegarder et quitter\n");
     printf("Votre choix :");
 }
-
 int lireChoix()
 {
     int choix;
-    scanf("%d",&choix);
+    scanf("%d", &choix);
     return choix;
 }
-int consommations[7];
-void initialiser()
+void initialiser(int tab[])
 {
-    for(int i=0;i<7;i++)
+    for (int i = 0; i < 7; i++)
     {
-        consommations[i]=0;
+        tab[i] = 0;
     }
 }
-void ajouterConsommation()
+void ajouterConsommation(int tab[])
 {
     int choixCategorie = 0;
     int quantite = 0;
@@ -38,47 +36,63 @@ void ajouterConsommation()
     printf("6. Fruits 🍎\n");
     printf("7. Proteines 🍗\n");
     printf("Votre choix :");
-    scanf("%d",&choixCategorie);
+    scanf("%d", &choixCategorie);
     if (choixCategorie < 1 || choixCategorie > 7)
     {
         printf("Choix invalide\n");
-        return ;
+        return;
     }
-    printf("combien d'unite ajouter? :");
-    scanf("%d",&quantite);
-    consommations[choixCategorie-1]= consommations[choixCategorie-1] + quantite;
+    printf("Combien d'unites ajouter ? :");
+    scanf("%d", &quantite);
+    tab[choixCategorie - 1] = tab[choixCategorie - 1] + quantite;
     printf("Consommation mise a jour.\n");
-
 }
-void afficheResume()
+void afficheResume(int tab[])
 {
     printf("========== Resume du jour ==========\n");
-    printf("Eau :%d\n",consommations[0]);
-    printf("Cafe :%d\n",consommations[1]);
-    printf("Bonbons :%d\n",consommations[2]);
-    printf("Gateau :%d\n",consommations[3]);
-    printf("Legumes :%d\n",consommations[4]);
-    printf("Fruits :%d\n",consommations[5]);
-    printf("Proteines :%d\n",consommations[6]);
+    printf("Eau       : %d\n", tab[0]);
+    printf("Cafe      : %d\n", tab[1]);
+    printf("Bonbons   : %d\n", tab[2]);
+    printf("Gateau    : %d\n", tab[3]);
+    printf("Legumes   : %d\n", tab[4]);
+    printf("Fruits    : %d\n", tab[5]);
+    printf("Proteines : %d\n", tab[6]);
     printf("====================================\n");
 }
-int charger()
+
+int charger(int tab[])
 {
-    FILE * f = fopen("consommation.txt","r");
+    FILE *f = fopen("consommation.txt", "r");
     if (f == NULL)
     {
         return 0;
     }
-    else{
-        for(int i = 0;i < 7;i++)
+
+    for (int i = 0; i < 7; i++)
+    {
+        if (fscanf(f, "%d", &tab[i]) != 1)
         {
-            if (fscanf(f,"%d",&consommations[i]) != 1)
-            {
-                fclose(f);
-                return 0;
-            }
+            fclose(f);
+            return 0;
         }
     }
+    fclose(f);
+    return 1;
+}
+
+int sauvegarde(int tab[])
+{
+    FILE *f = fopen("consommation.txt", "w");
+    if (f == NULL)
+    {
+        return 0;
+    }
+    for (int i = 0; i < 7; i++)
+    {
+        fprintf(f, "%d ", tab[i]); 
+    }
+    fprintf(f, "\n");
+
     fclose(f);
     return 1;
 }

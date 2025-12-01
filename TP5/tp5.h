@@ -4,8 +4,9 @@
 #include <locale.h>
 void afficherMenu();
 int lireChoix();
-void initialiser();
-void ajouterConsommation();
-void afficheResume();
-int charger();
+void initialiser(int tab[]);
+void ajouterConsommation(int tab[]);
+void afficheResume(int tab[]);
+int charger(int tab[]);
+int sauvegarde(int tab[]);
 #endif
