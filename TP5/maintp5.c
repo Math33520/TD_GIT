@@ -8,13 +8,14 @@ int main ()
     setlocale(LC_ALL, ".UTF-8"); 
     int choix = 0;
     int tab[7];
-    initialiser(tab);
+    int objectifs[7] = {8, 0, 0, 0, 5, 3, 2};
+
     if (charger(tab) == 0)
     {
-        printf("Aucune sauvegarde trouvee\n");
+        printf("Aucune sauvegarde trouvee.\n");
         initialiser(tab);
     }
-    while (choix != 3)
+    while (choix != 4)
     {
         afficherMenu();
         choix = lireChoix();
@@ -28,17 +29,17 @@ int main ()
         }
         else if (choix == 3)
         {
-            printf("Sauvegarde et quitter \n");
-            if (sauvegarde(tab)==1)
-            {
-                printf("Sauvegarde reussie.\n");
-            }
-            else
-            {
-            printf("Erreur sauvegarde.\n");
-            }
+            afficherObjectifsEtScore(tab, objectifs);
         }
-        else 
+        else if (choix == 4)
+        {
+            printf("Sauvegarde et quitter\n");
+            if (sauvegarde(tab))
+                printf("Sauvegarde reussie.\n");
+            else
+                printf("Erreur sauvegarde.\n");
+        }
+        else
         {
             printf("Choix invalide.\n");
         }

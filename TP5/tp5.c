@@ -7,9 +7,11 @@ void afficherMenu()
     printf("==============================\n");
     printf("1. Ajouter une consommation\n");
     printf("2. Afficher le resume du jour\n");
-    printf("3. Sauvegarder et quitter\n");
+    printf("3. Afficher les objectifs et le score\n");
+    printf("4. Sauvegarder et quitter\n");
     printf("Votre choix :");
 }
+
 int lireChoix()
 {
     int choix;
@@ -168,4 +170,150 @@ void afficherBarre(int valeur, int max)
         else
             printf("░");
     }
+}
+int calculerScoreSante(int tab[], int objectifs[])
+{
+    int score = 50;
+    if (tab[0] >= objectifs[0]) score += 10;
+    if (tab[4] >= objectifs[4]) score += 10;
+    if (tab[5] >= objectifs[5]) score += 10;
+    if (tab[6] >= objectifs[6]) score += 10;
+    if (tab[2] > 5) {
+        int surplus = tab[2] - 5;
+        int malus = surplus;
+        if (malus > 15) malus = 15;
+        score -= malus;
+    }
+    if (tab[1] > 3) {
+        int surplus = tab[1] - 3;
+        int malus = surplus * 2;
+        if (malus > 20) malus = 20;
+        score -= malus;
+    }
+    if (score < 0)   score = 0;
+    if (score > 100) score = 100;
+
+    return score;
+}
+void afficherObjectifsEtScore(int tab[], int objectifs[])
+{
+    printf("====== Objectifs du jour ======\n");
+    printf("Categorie   Objectif  Atteint ?\n");
+    printf("Eau        : ");
+    if (objectifs[0] > 0)
+    {
+        printf("%d   ", objectifs[0]);
+        if (tab[0] >= objectifs[0])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else 
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    printf("Cafe       : ");
+    if (objectifs[1] > 0) {
+        printf("%d   ", objectifs[1]);
+        if (tab[1] >= objectifs[1])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    printf("Bonbons    : ");
+    if (objectifs[2] > 0)
+    {
+        printf("%d   ", objectifs[2]);
+        if (tab[2] >= objectifs[2])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    printf("Gateau     : ");
+    if (objectifs[3] > 0) {
+        printf("%d   ", objectifs[3]);
+        if (tab[3] >= objectifs[3])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    printf("Legumes    : ");
+    if (objectifs[4] > 0) {
+        printf("%d   ", objectifs[4]);
+        if (tab[4] >= objectifs[4])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    printf("Fruits     : ");
+    if (objectifs[5] > 0) {
+        printf("%d   ", objectifs[5]);
+        if (tab[5] >= objectifs[5])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    printf("Proteines  : ");
+    if (objectifs[6] > 0) {
+        printf("%d   ", objectifs[6]);
+        if (tab[6] >= objectifs[6])
+        {
+            printf("✅\n");
+        }
+        else
+        {
+            printf("❌\n");
+        }
+    }
+    else
+    {
+        printf("-   (pas d objectif)\n");
+    }
+    int score = calculerScoreSante(tab, objectifs);
+    printf("\nScore de sante du jour : %d / 100\n", score);
+    printf("====================================\n");
 }
