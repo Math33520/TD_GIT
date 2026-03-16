@@ -1,12 +1,4 @@
-
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <time.h>
-#include <ctype.h>
 #include  "blindtest.h"
-
-
 /* -------------------------------------------------- */
 /* OUTILS SUR LES CHAINES                             */
 /* -------------------------------------------------- */

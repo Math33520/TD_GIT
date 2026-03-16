@@ -1,6 +1,11 @@
 #ifndef blindtest
 #define blindrest
 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <ctype.h>
 
 typedef struct chanson {
     char nom_fichier[100];
@@ -23,6 +28,6 @@ void trim_newline(char*s);
 void normalize_string(char *dest, const char *src);
 int string_equals_normalized(const char *a, const char *b);
 void play_song_excerpt_at(const char *filename, int start, int seconds);
-void melanger_morceau(chanson *song);
-
+void melanger_morceau(chanson *song, int count);
+int load_songs(char *filename,chanson*songs);
 #endif
