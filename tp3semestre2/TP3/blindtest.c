@@ -138,13 +138,21 @@ int load_songs(char *filename,chanson*songs) {
         strcpy(songs[count].titre, title);
         strcpy(songs[count].artiste, artist);
         count++;
-
-// TO DO
-// STOCKER LES CHANSONS
-
-        count++;
     }
 
     fclose(f);
     return count;
+}
+
+void melanger_morceau(chanson*song,int count){
+    if (song == NULL || count <=1 ){
+        return ;
+    }
+    for (int i =  0 ; i < count  ;i++){
+        int j = rand() %count ;
+        chanson temp = song[i];
+        song[i]= song[j];
+        song[j]=temp;
+
+    }
 }
