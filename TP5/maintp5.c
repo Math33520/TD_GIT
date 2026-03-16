@@ -9,14 +9,13 @@ int main ()
     int choix = 0;
     int tab[7];
     int objectifs[7] = {8, 0, 0, 0, 5, 3, 2};
-
     if (charger(tab) == 0)
     {
         printf("Aucune sauvegarde trouvee.\n");
         initialiser(tab);
     }
     while (choix != 4)
-    {
+    {  
         afficherMenu();
         choix = lireChoix();
         if (choix == 1)
