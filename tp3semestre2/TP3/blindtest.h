@@ -30,4 +30,7 @@ int string_equals_normalized(const char *a, const char *b);
 void play_song_excerpt_at(const char *filename, int start, int seconds);
 void melanger_morceau(chanson *song, int count);
 int load_songs(const char *filename,chanson*songs);
+int charger_scores(const char *filename, listejoueurs joueurs[], int max);
+int update_score(listejoueurs joueurs[], int count, const char *nom, int score);
+void sauver_scores(const char *filename, listejoueurs joueurs[], int count);
 #endif

@@ -137,3 +137,57 @@ void melanger_morceau(chanson*song,int count){
         song[j]=temp;
     }
 }
+int charger_scores(const char *filename, listejoueurs joueurs[], int max) {
+    FILE *f = fopen(filename, "r");
+    int count = 0;
+
+    if (f == NULL) {
+        return 0;
+    }
+
+    while (count < max &&
+           fscanf(f, "%99[^;];%d\n",
+                  joueurs[count].nom,
+                  &joueurs[count].meilleur_score) == 2) {
+
+        count++;
+    }
+
+    fclose(f);
+    return count;
+}
+int update_score(listejoueurs joueurs[], int count, const char *nom, int score) {
+    int i;
+
+    for (i = 0; i < count; i++) {
+        if (strcmp(joueurs[i].nom, nom) == 0) {
+
+            if (score > joueurs[i].meilleur_score) {
+                joueurs[i].meilleur_score = score;
+            }
+
+            return count;
+        }
+    }
+    strcpy(joueurs[count].nom, nom);
+    joueurs[count].meilleur_score = score;
+
+    return count + 1;
+}
+void sauver_scores(const char *filename, listejoueurs joueurs[], int count) {
+    FILE *f = fopen(filename, "w");
+    int i;
+
+    if (f == NULL) {
+        printf("Erreur sauvegarde scores\n");
+        return;
+    }
+
+    for (i = 0; i < count; i++) {
+        fprintf(f, "%s;%d\n",
+                joueurs[i].nom,
+                joueurs[i].meilleur_score);
+    }
+
+    fclose(f);
+}

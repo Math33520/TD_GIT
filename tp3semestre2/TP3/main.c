@@ -9,6 +9,8 @@ int main() {
     int i;
     joueur j;
     char reponse[100];
+    listejoueurs joueurs[100];
+    int nb_joueurs;
 
     srand(time(NULL));
 
@@ -50,6 +52,10 @@ int main() {
     printf("Fin de la partie !\n");
     printf("Joueur : %s\n", j.nom);
     printf("Score final : %d\n", j.score);
+
+    nb_joueurs = charger_scores("scores.txt", joueurs, 100);
+    nb_joueurs = update_score(joueurs, nb_joueurs, j.nom, j.score);
+    sauver_scores("scores.txt", joueurs, nb_joueurs);
 
     return 0;
 }
