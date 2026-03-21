@@ -1,5 +1,5 @@
-#ifndef blindtest
-#define blindrest
+#ifndef BLINDTEST_H
+#define BLINDTEST_H
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,5 +29,5 @@ void normalize_string(char *dest, const char *src);
 int string_equals_normalized(const char *a, const char *b);
 void play_song_excerpt_at(const char *filename, int start, int seconds);
 void melanger_morceau(chanson *song, int count);
-int load_songs(char *filename,chanson*songs);
+int load_songs(const char *filename,chanson*songs);
 #endif

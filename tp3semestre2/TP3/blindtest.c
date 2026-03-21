@@ -1,4 +1,5 @@
-#include  "blindtest.h"
+#include "blindtest.h"
+
 /* -------------------------------------------------- */
 /* OUTILS SUR LES CHAINES                             */
 /* -------------------------------------------------- */
@@ -85,13 +86,7 @@ void play_song_excerpt_at(const char *filename, int start, int seconds) {
 Charge les morceaux depuis songs.txt dans un tableau.
 Retourne le nombre de morceaux chargés.
 */
-int load_songs(char *filename,chanson*songs) {
-    int taille =100;
-    songs = malloc(sizeof(chanson)*taille);
-    if(songs==NULL){
-        return 0;
-    }
-
+int load_songs(const char *filename,chanson*songs) {
     FILE *f;
     char line[3 * 256];
     int count = 0;
@@ -122,10 +117,6 @@ int load_songs(char *filename,chanson*songs) {
             continue;
         }
 
-        if (count>=taille){
-            taille *=2;
-            songs = realloc(songs,sizeof(chanson)*taille);
-        }
         strcpy(songs[count].nom_fichier, file);
         strcpy(songs[count].titre, title);
         strcpy(songs[count].artiste, artist);
@@ -135,7 +126,6 @@ int load_songs(char *filename,chanson*songs) {
     fclose(f);
     return count;
 }
-
 void melanger_morceau(chanson*song,int count){
     if (song == NULL || count <=1 ){
         return ;
@@ -145,6 +135,5 @@ void melanger_morceau(chanson*song,int count){
         chanson temp = song[i];
         song[i]= song[j];
         song[j]=temp;
-
     }
 }
