@@ -17,23 +17,23 @@ namespace TP4TUTEST
 		{
 			Assert::AreEqual(estPair(6), 1);
 		}
-		TEST_METHOD(TestEstPair)
+		TEST_METHOD(TestEstPair1)
 		{
 			Assert::AreEqual(estPair(4), 1);
 		}
-		TEST_METHOD(TestEstPair)
+		TEST_METHOD(TestEstPair2)
 		{
 			Assert::AreEqual(estPair(7), 0);
 		}
-		TEST_METHOD(TestEstPair)
+		TEST_METHOD(TestEstPair3)
 		{
 			Assert::AreEqual(estPair(0), 1);
 		}
-		TEST_METHOD(TestEstPair)
+		TEST_METHOD(TestEstPair4)
 		{
 			Assert::AreEqual(estPair(-2), 1);
 		}
-		TEST_METHOD(TestEstPair)
+		TEST_METHOD(TestEstPair5)
 		{
 			Assert::AreEqual(estPair(-3), 0);
 		}
