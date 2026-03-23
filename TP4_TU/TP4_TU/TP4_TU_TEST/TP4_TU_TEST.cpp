@@ -37,6 +37,8 @@ namespace TP4TUTEST
 		{
 			Assert::AreEqual(estPair(-3), 0);
 		}
+
+
 		TEST_METHOD(TestMax1)
 		{
 			Assert::AreEqual(max2(5,3),5);
@@ -53,5 +55,23 @@ namespace TP4TUTEST
 		{
 			Assert::AreEqual(max2(4,4), 4);
 		}
+		TEST_METHOD(TestFactorielle1)
+		{
+			Assert::AreEqual(factorielle(0), 1);
+		}
+		TEST_METHOD(TestFactorielle2)
+		{
+			Assert::AreEqual(factorielle(1), 1);
+		}
+		TEST_METHOD(TestFactorielle3)
+		{
+			Assert::AreEqual(factorielle(4), 24);
+		}
+		TEST_METHOD(TestFactorielle4)
+		{
+			Assert::AreEqual(factorielle(5), 120);
+		}
+
+
 	};
 }
