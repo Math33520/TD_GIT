@@ -1,7 +1,8 @@
 #include "TP4_TU.h"
 
 int estPair(int n) {
-    return n % 2 == 1;
+    
+    return n % 2 == 0;
 }
 
 int max2(int a, int b) {
