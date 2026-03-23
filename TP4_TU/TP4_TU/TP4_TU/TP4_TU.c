@@ -1,5 +1,6 @@
 #include "TP4_TU.h"
-
+#include <stdio.h>
+#include <stdlib.h>
 int estPair(int n) {
     
     return n % 2 == 0;
